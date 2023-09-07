@@ -1,15 +1,17 @@
 require("express-async-errors");
+require("dotenv/config");
+
 const migrationsRun = require("./database/sqlite/migrations");
 const AppError = require("./utils/AppError");
 const uploadConfig = require("./configs/upload");
 
 const cors = require("cors");
-const express = require("express"); //importando o express
+const express = require("express");
 const routes = require("./routes");
 
 migrationsRun();
 
-const app = express(); //inicializando o express
+const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -33,5 +35,5 @@ app.use((error, request, response, next) => {
   });
 });
 
-const PORT = 3333; //porta que a API vai ficar observando
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`));
