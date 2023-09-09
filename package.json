@@ -5,7 +5,8 @@
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js --env production",
     "dev": "nodemon ./src/server.js",
-    "migrate": "knex migrate:latest"
+    "migrate": "knex migrate:latest",
+    "test": "jest"
   },
   "author": "Marcelo Claros Martins",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "sqlite3": "^5.1.2"
   },
   "devDependencies": {
+    "jest": "^29.6.4",
     "nodemon": "^2.0.20"
   }
 }
